@@ -1,0 +1,340 @@
+<mvc:View controllerName="tfnswequip.tfnswmfs.controller.Update"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout"
+	xmlns:m="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<m:App id="App" title="{i18n&gt;appTitle}">
+		<m:pages>
+			<m:Page backgroundDesign="Standard" id="page" navButtonPress="onNavBack"
+				showNavButton="true" title="{i18n&gt;fltDetails}">
+				<m:content>
+					<m:ToolbarSpacer class="height10" width="10px" />
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L3 M3 S12"
+						hSpacing="1" vSpacing="0" width="100%">
+						<layout:content>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;faultID}" width="100%" />
+									<m:Input fieldwidth="100%" editable="false" enabled="false"
+										id="faultID" text="" value="{faultModel&gt;/Qmnum}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;tripNo}" width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="tripNo"
+										text="" value="{faultModel&gt;/Tripnum}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;setNo}" width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="setNo"
+										text="" value="{faultModel&gt;/Setid}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;carNo}" width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="carNo"
+										text="" value="{faultModel&gt;/Carid}" width="100%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L4 M4 S12"
+						hSpacing="1" vSpacing="0" width="100%">
+						<layout:content>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;sys}" width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="system"
+										text="{faultModel&gt;/SubsysDesc}" value="" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltPosition}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="fltPosition"
+										text="" value="{faultModel&gt;/PositionDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltSymptom}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="fltSymptom"
+										text="" value="{faultModel>/QmgrpDesc} - {faultModel>/QmcodDesc}"
+										width="100%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L4 M4 S12"
+						hSpacing="1" id="statusRow" vSpacing="0" visible="false" width="100%">
+						<layout:content>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;faultStatus}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="faultStatus"
+										text="" value="{faultModel&gt;/SysStatDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;faultSource}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="faultSource"
+										text="{faultModel&gt;/FaultSrcDesc}" value="{faultModel&gt;/FaultSrcDesc}"
+										width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;auditNumber}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="auditNumber"
+										text="" value="{faultModel&gt;/AuditNum}" width="100%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L4 M4 S12"
+						hSpacing="1" id="dateRow" vSpacing="0" visible="false" width="100%">
+						<layout:content>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltDate}" width="100%" />
+									<m:DateTimeInput displayFormat="dd-MM-yyyy" id="fltDate"
+										width="100%"
+										value="{path:'faultModel&gt;/FaultDate', type: 'sap.ui.model.type.DateTime', pattern:'dd.MM.yyyy HH:mm:ss X'}"
+										enabled="false" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltLocation}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="fltLocation"
+										text="" value="{faultModel&gt;/FaultLocDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;reportPhase}"
+										width="100%" />
+									<m:Input fieldwidth="100%" enabled="false" id="reportPhase"
+										text="" value="{faultModel&gt;/RepPhaseDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L6 M6 S12"
+						hSpacing="1" id="commentsRow" vSpacing="0" visible="false" width="100%">
+						<layout:content>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltComments}"
+										width="100%" />
+									<m:TextArea editable="false" enabled="true" id="fltComments"
+										rows="4" showValueStateMessage="false" value="{faultModel&gt;/Longtext}"
+										width="100%" wrapping="Soft" />
+								</m:items>
+							</m:VBox>
+							<m:VBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;prevWorkInfo}"
+										width="100%" />
+									<m:TextArea editable="false" enabled="true" id="prevWorkInfo"
+										rows="4" showValueStateMessage="false" value="" width="100%"
+										wrapping="Soft" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid class="colorGridwithBorder" defaultIndent="L0 M0 S0"
+						defaultSpan="L4 M4 S12" hSpacing="1" id="priorityRow" vSpacing="0"
+						visible="false" width="100%">
+						<layout:content>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="99%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;fltPriority}"
+										width="100%" />
+									<m:Input fieldwidth="100%" id="fltPriority" text=""
+										enabled="false" value="{faultModel&gt;/PriorityDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="99%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;enggFlag}" width="100%" />
+									<m:Input fieldwidth="100%" id="enggFlag" text=""
+										enabled="false" value="{faultModel&gt;/EngFlagDesc}" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="99%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;reasonUpgrade}"
+										width="100%" />
+									<m:Input fieldwidth="100%" id="reasonUpgrade" text=""
+										value="" width="100%" enabled="false" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid class="colorGridwithBottom" defaultIndent="L0 M0 S0"
+						defaultSpan="L6 M6 S12" hSpacing="1" id="cutOutRow" position="Left"
+						vSpacing="0" visible="false" width="100%">
+						<layout:content>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:CheckBox id="cutOut" design="Bold" text="{i18n&gt;cutOut}"
+										enabled="false" textAlign="Center" textDirection="RTL" width="100%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:CheckBox id="nonBlockFlt" design="Bold"
+										text="{i18n&gt;nonBlockFlt}" enabled="false" width="100%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid class="colorGridwithBorder" defaultIndent="L0 M0 S0"
+						defaultSpan="L4 M4 S12" hSpacing="1" id="rectifiedRow" vSpacing="0"
+						width="100%">
+						<layout:content>
+							<m:HBox alignItems="Start" justifyContent="Center" width="100%">
+								<m:items>
+									<m:VBox class="whiteBackground" justifyContent="SpaceBetween"
+										width="100%">
+										<m:items>
+											<m:ToolbarSpacer class="height10" />
+											<m:ToolbarSpacer class="height10" />
+											<m:HBox alignItems="Center" justifyContent="Center"
+												width="100%">
+												<m:items>
+													<m:CheckBox id="faultRectified" width="auto" />
+													<m:ToolbarSpacer class="height10" width="10px" />
+													<m:VBox alignItems="Center" justifyContent="Center"
+														width="auto">
+														<m:items>
+															<m:Text text="{i18n>faultRectified}" design="Bold"
+																width="100%" />
+														</m:items>
+													</m:VBox>
+												</m:items>
+											</m:HBox>
+										</m:items>
+									</m:VBox>
+									<m:ToolbarSpacer class="height10" width="10px" />
+									<m:VBox justifyContent="End" width="auto">
+										<m:items>
+											<m:ToolbarSpacer class="height10" />
+											<m:ToolbarSpacer class="height10" />
+											<m:Button icon="sap-icon://map" id="map" press="onPressMap"
+												width="100%" />
+										</m:items>
+									</m:VBox>
+								</m:items>
+							</m:HBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;temp}" width="99%" />
+									<m:Input fieldWidth="auto" id="temp" text=""
+										value="{faultModel&gt;/TempDesc}" width="99%" />
+								</m:items>
+							</m:VBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;weather}" width="99%" />
+									<m:Input fieldWidth="auto" id="weather"
+										text="{faultModel&gt;/WeatherDesc}" value="{faultModel&gt;/WeatherDesc}"
+										width="99%" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid class="colorGridwithBottom" defaultIndent="L0 M0 S0"
+						defaultSpan="L6 M6 S12" hSpacing="1" vSpacing="0" width="100%">
+						<layout:content>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;workInfoFound}"
+										width="99%" />
+									<m:TextArea id="workInfoFound" rows="4"
+										showValueStateMessage="false" value="{faultModel&gt;/WorkFound}"
+										width="99%" wrapping="Soft" />
+								</m:items>
+							</m:VBox>
+							<m:VBox class="whiteBackground" justifyContent="Center"
+								width="100%">
+								<m:items>
+									<m:Label design="Bold" text="{i18n&gt;workInfoAction}"
+										width="99%" />
+									<m:TextArea id="workInfoAction" rows="4"
+										showValueStateMessage="false" value="{faultModel&gt;/WorkAction}"
+										width="99%" wrapping="Soft" />
+								</m:items>
+							</m:VBox>
+						</layout:content>
+					</layout:Grid>
+					<layout:Grid class="colorGridwithBottom" defaultIndent="L0 M0 S0"
+						defaultSpan="L4 M4 S6" hSpacing="1" id="replace" vSpacing="0"
+						width="100%">
+						<layout:content>
+							<m:FlexBox alignItems="Center" class="whiteBackground"
+								justifyContent="SpaceBetween" width="100%">
+								<m:items>
+									<m:Label class="alignIndependent" design="Bold"
+										text="{i18n&gt;showMore}" width="100%" />
+									<m:ToolbarSpacer class="height15" />
+									<m:Switch change="onShowMore" customTextOff=" "
+										customTextOn=" " id="showMore" state="false" text="{i18n&gt;showMore}"
+										width="99%" />
+									<m:ToolbarSpacer width="5px" />
+								</m:items>
+							</m:FlexBox>
+							<m:FlexBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Button id="photoButton" press="onPressAttachments"
+										text="{i18n&gt;photoButton}" width="100%" />
+								</m:items>
+							</m:FlexBox>
+							<m:FlexBox justifyContent="Center" width="100%">
+								<m:items>
+									<m:Button id="updateButton" press="onPressUpdate"
+										text="{i18n&gt;updateButton}" width="100%" />
+								</m:items>
+							</m:FlexBox>
+						</layout:content>
+					</layout:Grid>
+				</m:content>
+				<m:footer>
+					<m:Bar>
+						<m:customData />
+						<m:contentMiddle>
+							<m:Button icon="sap-icon://search" id="s_search" text="{i18n&gt;search}"
+								type="Emphasized" width="auto" />
+							<m:Button icon="sap-icon://create" id="s_create"
+								press="onPressNavToCreate" text="{i18n&gt;crt}" type="Default"
+								width="100px" />
+							<m:Button icon="sap-icon://message-information" id="s_info"
+								press="onPressNavToInfo" text="{i18n&gt;inf}" type="Default"
+								width="auto" />
+							<!-- <m:Button icon="sap-icon://cause" id="s_offline" text="{i18n&gt;off}" 
+								type="Default" width="auto"/> -->
+						</m:contentMiddle>
+					</m:Bar>
+				</m:footer>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</mvc:View>
